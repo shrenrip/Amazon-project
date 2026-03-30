@@ -55,7 +55,7 @@ let cartItems = '';
               ${matchingProduct.name}
             </div>
             <div class="product-price">
-              $${formatCurrency(matchingProduct.priceCents)}
+              ${matchingProduct.getPrice()}
             </div>
             <div class="product-quantity">
               <span>
@@ -112,7 +112,7 @@ let cartItems = '';
           value="${currentQuantity}"
           min="1">
         <button 
-          class="save button js-save-button">Save</button>`;
+          class="save-button js-save-button">Save</button>`;
 
         container.querySelector('.js-save-button')
           .addEventListener('click', () => {
@@ -127,6 +127,8 @@ let cartItems = '';
             cart.cartItems.forEach((cartItem) => {
               if(cartItem.productId === productId) {
                 cartItem.quantity = newQuantity;
+                cart.saveToStorage();
+                renderOrderSummary();
               }
             });
         cart.saveToStorage();    

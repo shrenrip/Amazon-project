@@ -78,7 +78,6 @@ class Cart {
   }
 }
 
-const cart = new Cart('cart-oop');
-const businessCart = new Cart('cart-business');
+const cart = new Cart('cart');
 
-export { cart, businessCart };
+export {cart};
